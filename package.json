@@ -16,6 +16,7 @@
   "dependencies": {
     "@angular/animations": "latest",
     "@angular/cdk": "latest",
+    "@angular/cli": "latest",
     "@angular/common": "latest",
     "@angular/compiler": "latest",
     "@angular/compiler-cli": "latest",
