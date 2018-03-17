@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "client": "ng build ng serve",
+    "client": "ng build --watch ng serve",
     "server": "nodemon ./bin/www",
     "start": "npm-run-all -p client server",
     "build": "ng build",
