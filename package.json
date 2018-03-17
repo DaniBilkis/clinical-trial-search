@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "client": "ng build --watch ng serve",
+    "client": "ng build ng serve",
     "server": "nodemon ./bin/www",
     "start": "npm-run-all -p client server",
     "build": "ng build",
@@ -45,6 +45,7 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.0",
     "password-hash": "^1.2.2",
+    "proxy-agent": "^2.2.0",
     "rxjs": "latest",
     "serve-favicon": "latest",
     "zone.js": "latest"
