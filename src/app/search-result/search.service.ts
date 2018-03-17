@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Http, Response } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
+//import { Hero } from './hero';
+
+@Injectable()
+export class SearchService {
+  constructor(private http: HttpClient) { }
+
+  search(term: string): Observable<any> {
+    return this.http
+      .get(`/api/search/${term}`)
+      // .subscribe(data => data.body );
+      // .subscribe(data => { this.searchResults = data; });
+      // .map( res => res.json().results )
+       .catch((error: any) => {
+        console.error('A friendly error occurred', error);
+        return Observable.throw(error.message || error);
+       });
+  }
+}
