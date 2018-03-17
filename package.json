@@ -18,6 +18,7 @@
     "@angular/cdk": "latest",
     "@angular/common": "latest",
     "@angular/compiler": "latest",
+    "@angular/compiler-cli": "latest",
     "@angular/core": "latest",
     "@angular/forms": "latest",
     "@angular/http": "latest",
