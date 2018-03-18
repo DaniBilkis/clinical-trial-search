@@ -11,6 +11,7 @@ import { AppComponent }            from './app.component';
 import { AppRoutingModule }        from './app-routing.module';
 import { SearchResultComponent }   from './search-result/search-result.component';
 import { LoginComponent }          from './login/login.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -19,6 +20,7 @@ import { LoginComponent }          from './login/login.component';
     AppComponent,
     SearchResultComponent,
     LoginComponent,
+    AboutComponent,
 
   ],
   imports: [
