@@ -11,7 +11,11 @@ import { AppComponent }            from './app.component';
 import { AppRoutingModule }        from './app-routing.module';
 import { SearchResultComponent }   from './search-result/search-result.component';
 import { LoginComponent }          from './login/login.component';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent }          from './about/about.component';
+import { ChartsModule }            from 'ng2-charts';
+import { StatisticsWidgetComponent } from './statistics-widget/statistics-widget.component';
+
+
 
 
 
@@ -21,6 +25,7 @@ import { AboutComponent } from './about/about.component';
     SearchResultComponent,
     LoginComponent,
     AboutComponent,
+    StatisticsWidgetComponent,
 
   ],
   imports: [
@@ -30,10 +35,12 @@ import { AboutComponent } from './about/about.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   exports: [
-    MaterialModule
+    MaterialModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

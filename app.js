@@ -5,11 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-require('./server/modules/db');
-var userSchema = require('./server/modules/schemas');
-var router = require('./server/routes/router');
+var userSchema = require('./server/modules/users');
+
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+//var LocalStrategy = require('passport-local').Strategy;
+
+// [SH] Bring in the data model
+require('./server/modules/db');
+
+// [SH] Bring in the Passport config after model is defined
+require('./server/config/passport');
+
+// [SH] Bring in the routes for the API (delete the default routes)
+var router = require('./server/routes/router');
 
 var app = express();
 
@@ -43,18 +51,21 @@ app.use(cookieParser());
 //app.use(mongo_db());
 
 //use sessions for tracking logins
+/*
 app.use(session({
   secret: 'work hard',
   resave: true,
   saveUninitialized: false
 }));
+*/
+// [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 // configure passport
-passport.use(new LocalStrategy(userSchema.authenticate()));
-passport.serializeUser(userSchema.serializeUser());
-passport.deserializeUser(userSchema.deserializeUser());
+//passport.use(new LocalStrategy(userSchema.authenticate()));
+//passport.serializeUser(userSchema.serializeUser());
+//passport.deserializeUser(userSchema.deserializeUser());
 //app.use(require('less-middleware')(path.join(__dirname, 'src')));
 app.use( express.static(path.join(__dirname, 'dist')) );
 
@@ -70,6 +81,9 @@ app.get('*', function (req, res) {
 //app.all('*', router);
 
 
+
+/// error handlers
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
@@ -77,9 +91,15 @@ app.use(function (req, res, next) {
     next(err);
 });
 
-/// error handlers
 
-// development error handler
+// [SH] Catch unauthorised errors
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401);
+    res.json({"message" : err.name + ": " + err.message});
+  }
+});
+
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {

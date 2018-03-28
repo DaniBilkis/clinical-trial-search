@@ -47,4 +47,4 @@ process.on( 'SIGTERM', function () {
 
 //mongoose.connect(dbURI);
 
-require('./schemas');
+require('./users');

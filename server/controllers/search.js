@@ -106,7 +106,14 @@ module.exports.searchSomething = function( req, res ) {
       index: 'clinical_trial',
       size: 100,
       _source: 'true',
-      q: 'message:' + req.params.searchedParameter
+      body: {
+        query: {
+          match: {
+            body: 'message:' + req.params.searchedParameter
+          }
+        }
+      }
+      //q: 'message:' + req.params.searchedParameter
     }).then(function (body) {
       var hits = body.hits.hits;
       console.log('3.Elasticsearch response body - ' + body);
