@@ -1,0 +1,118 @@
+
+
+
+<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+<div class="content-body" *ngIf="resultsReady">
+  <div id="header-padding"></div>
+  <div class="container">
+    <div class="row">
+      <main class="col-md-10">
+      <!--app-statistics-widget></app-statistics-widget-->
+      </main>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <main class="col-md-10">
+
+        <!--input #searchBox id="search-box" (keyup)="search(searchBox.value)" /-->
+        <mat-accordion>
+          <mat-paginator [length]="length"
+                         [pageSize]="pageSize"
+                         [pageSizeOptions]="pageSizeOptions"
+                         (page)="pageEvent = $event">
+          </mat-paginator>
+
+          <mat-expansion-panel *ngFor="let searchResult of searchResults$ | async" (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ searchResult._source.title_brief }}
+              </mat-panel-title>
+              <mat-panel-description>
+
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <article class="post post-1">
+              <header class="entry-header">
+                <h1 class="entry-title">
+                  <a href="single.html">{{ searchResult._source.title_official }}</a>
+                </h1>
+                <div class="entry-meta">
+                  <span class="post-category">Status: {{ searchResult._source.status_study_overall }}</span>
+
+                  <span class="post-date">Start Date: <time class="entry-date" datetime="2012-11-09T23:15:57+00:00">{{ searchResult._source.study_start_date }}</time></span>
+
+                  <span class="post-date">Completion Date: <time class="entry-date" datetime="2012-11-09T23:15:57+00:00">{{ searchResult._source.study_completion_date }}</time></span>
+
+                  <span class="post-author">Cotact: {{ searchResult._source.pointOfContact_phone }}</span>
+
+                  <span class="comments-link"><a href="#">4 Comments</a></span>
+                </div>
+              </header>
+              <div class="entry-content clearfix">
+                <h3 class="widget-title">Brief Summary</h3>
+                <p>{{ searchResult._source.study_description_brief_summary }}</p>
+                <h3 class="widget-title">Detailed Summary</h3>
+                <p>{{ searchResult._source.study_description_detailed }}</p>
+
+                <div class="read-more cl-effect-14">
+                  <a href="single.html" class="more-link">Continue reading <span class="meta-nav">→</span></a>
+                </div>
+              </div>
+            </article>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+      </main>
+      <aside class="col-md-2">
+        <div class="widget widget-recent-posts">
+          <h3 class="widget-title">Recent Posts</h3>
+          <ul>
+            <li>
+              <a href="#">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
+            </li>
+            <li>
+              <a href="#">Post 2</a>
+            </li>
+            <li>
+              <a href="#">Post 3</a>
+            </li>
+          </ul>
+        </div>
+        <div class="widget widget-archives">
+          <h3 class="widget-title">Archive Updates</h3>
+          <ul>
+            <li>
+              <a href="#">March 2018</a>
+            </li>
+            <li>
+              <a href="#">November 2017</a>
+            </li>
+            <li>
+              <a href="#">August 2017</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="widget widget-category">
+          <h3 class="widget-title">Category</h3>
+          <ul>
+            <li>
+              <a href="#">Category 1</a>
+            </li>
+            <li>
+              <a href="#">Category 2</a>
+            </li>
+            <li>
+              <a href="#">Category 3</a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+

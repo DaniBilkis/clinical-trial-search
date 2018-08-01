@@ -1,0 +1,59 @@
+
+
+<div id="container">
+<!--div class="container"
+       fxLayout="column"
+       fxLayoutGap="10px"-->
+
+    <mat-toolbar class="example-fill-remaining-space">
+      <span>{{loginDescription}}</span>
+
+      <!-- This fills the remaining space of the current row -->
+      <span class="example-fill-remaining-space"></span>
+
+      <button class="mat-icon-button" (click)="close()">
+        <mat-icon svgIcon="ic_close" aria-label="Close dialog"></mat-icon>
+      </button>
+      <!--
+      <div class="mat-toolbar">
+        <h2>{{loginDescription}}</h2>
+        <span flex></span>
+        <button class="mat-icon-button" ng-click="dialog.close()">
+          <mat-icon svgIcon="ic_close" aria-label="Close dialog"></mat-icon>
+        </button>
+      </div>
+      -->
+    </mat-toolbar>
+    <h2 mat-dialog-title>{{loginDescription}}</h2>
+    <mat-dialog-content [formGroup]="loginForm">
+      <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="emailFormControl"
+               [errorStateMatcher]="matcher">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <!-- <input matInput placeholder="Course Description" formControlName="description"> -->
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" [formControl]="passwordFormControl">
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <!--<textarea matInput placeholder="Description" formControlName="longDescription"></textarea>-->
+      </mat-form-field>
+
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button mat-button color="warn" (click)="login()">Login</button>
+      <a [routerLink]="['/register']" mat-button >Sign Up</a>
+      <!--button class="mat-button" (click)="register()">Sign Up</button-->
+    </mat-dialog-actions>
+
+</div>

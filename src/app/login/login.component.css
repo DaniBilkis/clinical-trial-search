@@ -1,0 +1,44 @@
+.mat-form-field {
+  display: block;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+#header {
+  width: 100%;
+  background-color: red;
+  height: 30px;
+}
+
+#container {
+  width: 100%;
+  /*background-color: #ffcc33;*/
+  margin: auto;
+}
+#first {
+  width: 45%;
+  float: left;
+  /*height: 300px;
+  background-color: blue;*/
+}
+#second {
+  width: 100%;
+  float: left;
+  /*height: 300px;
+  background-color: green;*/
+}
+#clear {
+  clear: both;
+}
+
+#divider{
+  width: 10%;
+  float: left;
+  left:50%;
+  top:10%;
+  bottom:10%;
+  border-left:1px solid #eee;
+}

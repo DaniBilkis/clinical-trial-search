@@ -1,0 +1,71 @@
+
+<header id="site-header">
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-xs-4">
+      <div class="logo">
+        <h1><a routerLink="/">Clinical Trial <b>Search</b></a></h1>
+      </div>
+    </div><!-- col-md-4 -->
+    <div class="col-md-5 col-sm-5 col-xs-7">
+      <div id="header-search-box">
+        <div id="search-icon-div">
+      <span class="search-icon-span">
+        <i class="icon ion-ios-search"></i>
+      </span>
+        </div>
+        <div id="search-input-div">
+          <input #searchBox id="search-input-bar" (keyup)="onKeyUp(searchBox.value)" type="search" placeholder="" aria-label="Search">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-3 col-xs-2">
+
+      <nav class="main-nav nav navbar-right" role="navigation">
+        <div class="navbar-header">
+          <button type="button" id="trigger-overlay" class="navbar-toggle">
+            <span class="ion-navicon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="cl-effect-11 nav-item"><a class="nav-link" routerLink="/about" data-hover="About">About</a></li>
+            <li class="cl-effect-11 nav-item"><a class="nav-link" routerLink="full-width.html" data-hover="Favorites">Favorites</a></li>
+            <li class="cl-effect-11 nav-item"><a class="nav-link" (click)="openDialog()" data-hover="Login">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div><!-- col-md-8 -->
+  </div>
+</header>
+
+
+<!--app-search-result #searchResult></app-search-result-->
+<router-outlet></router-outlet>
+
+<footer id="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="copyright">&copy; 2018 Clinical Trial Search</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Mobile Menu -->
+<div class="overlay overlay-hugeinc">
+  <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="full-width.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<script src="js/script.js"></script>
+
