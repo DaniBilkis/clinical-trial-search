@@ -8,13 +8,14 @@
   "description": "Clinical trial search project. For better quality of life",
   "scripts": {
     "ng": "ng",
-    "client": "ng serve --port 3333 --proxy-config proxy.config.json",
-    "server": "nodemon ./bin/www --watch server",
-    "start": "concurrently \"yarn run server\" \"yarn run client\"",
-    "build": "ng build --watch",
+    "client": "ng serve --port 3333 --proxy-config proxy.conf.json",
+    "server": "node ./bin/www --watch server",
+    "start": "node ./bin/www",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build"
   },
   "dependencies": {
     "@angular/animations": "^6.0.0",
